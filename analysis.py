@@ -52,3 +52,17 @@ results = pd.DataFrame({
 
 print("\nStock Analysis")
 print(results.round(2))
+
+results[["1Y Return (%)", "Volatility (%)"]].plot(kind="bar")
+
+plt.title("Return vs Volatility")
+plt.xlabel("Ticker")
+plt.ylabel("Percentage")
+plt.grid(axis="y")
+plt.tight_layout()
+plt.show()
+
+correlation = daily_returns.corr()
+
+print("\nCorrelation Matrix")
+print(correlation.round(2))
