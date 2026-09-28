@@ -1,6 +1,7 @@
 import yfinance as yf
 import pandas as pd
 import numpy as np
+import matplotlib.pyplot as plt
 
 pd.set_option("display.width", None)
 pd.set_option("display.max_columns", None)
@@ -30,6 +31,13 @@ sharpe_ratio = returns / annualized_volatility
 peak = prices.cummax()
 drawdown = (prices - peak) / peak
 max_drawdown = drawdown.min()
+normalized_prices = prices / prices.iloc[0] * 100
+normalized_prices.plot()
+plt.title("Normalized Stock Performance")
+plt.xlabel("Date")
+plt.ylabel("Value (Start = 100)")
+plt.legend(title="Ticker")
+plt.show()
 
 results = pd.DataFrame({
     "Price": current_price,
