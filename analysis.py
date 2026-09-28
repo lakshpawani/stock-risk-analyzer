@@ -33,11 +33,13 @@ peak = prices.cummax()
 drawdown = (prices - peak) / peak
 max_drawdown = drawdown.min()
 normalized_prices = prices / prices.iloc[0] * 100
-normalized_prices.plot()
-plt.title("Normalized Stock Performance")
-plt.xlabel("Date")
-plt.ylabel("Value (Start = 100)")
-plt.legend(title="Ticker")
+ax = normalized_prices.plot(figsize=(10, 6))
+ax.set_title("Normalized Stock Performance")
+ax.set_xlabel("Date")
+ax.set_ylabel("Value (Start = 100)")
+ax.grid(True)
+ax.legend(title="Ticker")
+plt.tight_layout()
 plt.show()
 
 results = pd.DataFrame({
