@@ -36,6 +36,7 @@ Run the program:
 Enter stock tickers separated by spaces:
 
     Enter stock tickers separated by spaces: AAPL NVDA META
+    Enter risk-free rate (%): 6.5
 
 For NSE stocks, use the `.NS` suffix:
 
@@ -57,7 +58,7 @@ Measures how much the stock's daily returns fluctuate. Higher volatility means g
 
 ### Sharpe Ratio
 
-A simplified measure of return relative to volatility. Higher values generally indicate better risk-adjusted performance.
+Measures return relative to volatility after accounting for the risk-free rate entered by the user.
 
 ### Maximum Drawdown
 
@@ -70,5 +71,5 @@ Stock data is obtained from Yahoo Finance through the `yfinance` library.
 ## Limitations
 
 - Uses approximately one year of historical data.
-- Sharpe Ratio uses a simplified calculation without a risk-free rate.
+- Sharpe Ratio uses a simplified calculation based on the user-providid risk-free rate.
 - Historical performance does not guarantee future results.

@@ -8,6 +8,7 @@ pd.set_option("display.max_columns", None)
 
 user_input = input("Enter stock tickers separated by spaces: ").upper()
 tickers = user_input.split()  
+risk_free_rate = float(input("Enter risk-free rate (%): ")) / 100
 if not tickers:
     print("Please enter at least one ticker.")
     exit()
@@ -26,7 +27,7 @@ returns = (prices.iloc[-1] / prices.iloc[0]) - 1
 daily_returns = prices.pct_change().dropna()
 daily_volatility = daily_returns.std()
 annualized_volatility = daily_volatility * np.sqrt(252)
-sharpe_ratio = returns / annualized_volatility
+sharpe_ratio = (returns - risk_free_rate) / annualized_volatility
 
 peak = prices.cummax()
 drawdown = (prices - peak) / peak
